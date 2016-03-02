@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include<locale.h>
 
-void interativo(int repeticao);
-void recursivo(int);
-int Fibonacci(int);
+void fibonacci_interativo(int repeticao);
+int fibonacci_recursivo(int);
 
 void fatorial_interativo(int valor);
 int fatorial_recursivo(int n);
@@ -31,14 +30,17 @@ int main(int argc, char** argv) {
             	printf("digite o valor de n:");
 			    scanf("%d", &n);
             	
-                interativo(n);
+                fibonacci_interativo(n);
                 break;
             case 2:
             	printf("Fibonacci Recursivo:\n");
             	printf("digite o valor de n:");
 			    scanf("%d", &n);
             	
-            	recursivo(n);
+			    for (int i=1;i<n;i++){
+			       printf("%d\n", fibonacci_recursivo(i));
+			    }            	
+            	
                 break;
             case 3:
             	printf("Fatorial Interativo:\n");
@@ -62,7 +64,7 @@ int main(int argc, char** argv) {
       while (opcao != 0);    
 }
 
-void interativo(int repeticao) {
+void fibonacci_interativo(int repeticao) {
   printf("1\n");
   int i = 2, j = 1, aux;
   while (i<repeticao) {
@@ -73,18 +75,11 @@ void interativo(int repeticao) {
   }
 }
 
-void recursivo(int repeticao) {
-	for (int i=1;i<repeticao;i++){
-       printf("%d\n", Fibonacci(i));
-    }
-}
-
-int Fibonacci(int x) 
-{
+int  fibonacci_recursivo(int x) {
     if (x < 2){
      return x;
     }     
-    return Fibonacci (x - 1) + Fibonacci (x - 2);
+    return fibonacci_recursivo(x - 1) + fibonacci_recursivo(x - 2);
 }
 
 void fatorial_interativo(int valor) {
